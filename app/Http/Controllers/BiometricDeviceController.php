@@ -157,7 +157,7 @@ class BiometricDeviceController extends Controller
                     $att_table->attendance_date = date('Y-m-d', strtotime($value['timestamp']));
                     $att_table->type = $value['type'];
 
-                    if (!($employee->schedules->first()->time_in >= $att_table->attendance_time)) {
+                    if (!($employee->schedules->first()->time_in_am >= $att_table->attendance_time)) {
                         $att_table->status = 0;
                         AttendanceController::lateTimeDevice($value['timestamp'],$employee);
                     }
@@ -183,11 +183,10 @@ class BiometricDeviceController extends Controller
                     $lve_table->leave_date = date('Y-m-d', strtotime($value['timestamp']));
                     $lve_table->type = $value['type'];
 
-                    if (!($employee->schedules->first()->time_out<=$lve_table->leave_time)) {
+                    if ($lve_table->leave_time < $employee->schedules->first()->time_out_pm) {
+                        // Early go
                         $lve_table->status = 0;
-                        
-                    } 
-                    else {
+                    } else {
                         leaveController::overTimeDevice($value['timestamp'],$employee);
                     }
                     $lve_table->save();

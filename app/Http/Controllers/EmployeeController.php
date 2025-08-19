@@ -23,6 +23,10 @@ class EmployeeController extends Controller
         $request->validated();
 
         $employee = new Employee;
+        // Optional alphanumeric employee code (e.g., MPD-0128-272)
+        if ($request->filled('emp_code')) {
+            $employee->emp_code = $request->emp_code;
+        }
         $employee->name = $request->name;
         $employee->position = $request->position;
         $employee->email = $request->email;

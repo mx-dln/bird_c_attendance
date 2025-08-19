@@ -42,27 +42,27 @@
                                     <th data-priority="2">Employee ID</th>
                                     <th data-priority="3">Name</th>
                                     <th data-priority="4">Late Time Duration</th>
-                                    <th data-priority="6">Time In</th>
-                                    <th data-priority="7">Time Out</th>
+                                    <th data-priority="6">Time In Am</th>
+                                    <th data-priority="7">Time Out Am</th>
+                                    <th data-priority="8">Time In Pm</th>
+                                    <th data-priority="9">Time Out Pm</th>
 
 
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($latetimes as $latetime)
-
                                 <tr>
                                     <td>{{ $latetime->latetime_date }}</td>
-                                    <td>{{ $latetime->emp_id }}</td>
+                                    <td>{{ $latetime->employee->emp_code ?? $latetime->emp_id }}</td>
                                     <td>{{ $latetime->employee->name }}</td>
                                     <td>{{ $latetime->duration }}</td>
-                                    <td>{{ $latetime->employee->schedules->first()->time_in }} </td>
-                                    <td>{{ $latetime->employee->schedules->first()->time_out }}</td>
+                                    <td>{{ optional($latetime->employee->schedules->first())->time_in_am }} </td>
+                                    <td>{{ optional($latetime->employee->schedules->first())->time_out_am }}</td>
+                                    <td>{{ optional($latetime->employee->schedules->first())->time_in_pm }}</td>
+                                    <td>{{ optional($latetime->employee->schedules->first())->time_out_pm }}</td>
                                 </tr>
-
                                 @endforeach
-
-
                             </tbody>
                         </table>
                     </div>

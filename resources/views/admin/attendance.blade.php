@@ -39,8 +39,11 @@
                                         <th data-priority="3">Name</th>
                                         <th data-priority="4">Attendance</th>
 
-                                        <th data-priority="6">Time In</th>
-                                        <th data-priority="7">Time Out</th>
+                                        <th data-priority="6">Time In AM</th>
+                                        <th data-priority="7">Time Out AM</th>
+                                        <th data-priority="8">Time In PM</th>
+                                        <th data-priority="9">Time Out PM</th>
+
 
 
                                     </tr>
@@ -61,8 +64,10 @@
                                                 @endif
                                             </td>
 
-                                            <td>{{ $attendance->employee->schedules->first()->time_in }} </td>
-                                            <td>{{ $attendance->employee->schedules->first()->time_out }}</td>
+                                            <td>{{ $attendance->employee->schedules->first()->time_in_am }} </td>
+                                            <td>{{ $attendance->employee->schedules->first()->time_out_am }}</td>
+                                            <td>{{ $attendance->employee->schedules->first()->time_in_pm }}</td>
+                                            <td>{{ $attendance->employee->schedules->first()->time_out_pm }}</td>
                                         </tr>
 
                                     @endforeach

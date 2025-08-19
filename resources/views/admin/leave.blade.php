@@ -43,8 +43,10 @@
                                         <th data-priority="3">Name</th>
                                      
                                         <th data-priority="5">Leave</th>
-                                        <th data-priority="6">Time In</th>
-                                        <th data-priority="7">Time Out</th>
+                                        <th data-priority="6">Time In (AM)</th>
+                                        <th data-priority="7">Time Out (AM)</th>
+                                        <th data-priority="8">Time In (PM)</th>
+                                        <th data-priority="9">Time Out (PM)</th>
 
 
                                     </tr>
@@ -64,8 +66,10 @@
                                         <span class="badge badge-danger badge-pill float-right">Early GO</span>
                                         @endif
                                     </td>
-                                    <td>{{$leave->employee->schedules->first()->time_in}} </td>
-                                    <td>{{$leave->employee->schedules->first()->time_out}}</td>
+                                    <td>{{$leave->employee->schedules->first()->time_in_am}} </td>
+                                    <td>{{$leave->employee->schedules->first()->time_out_am}}</td>
+                                    <td>{{$leave->employee->schedules->first()->time_in_pm}}</td>
+                                    <td>{{$leave->employee->schedules->first()->time_out_pm}}</td>
                                 </tr>
 
                                 @endforeach

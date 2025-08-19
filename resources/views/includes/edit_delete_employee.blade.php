@@ -45,8 +45,7 @@
                         <select class="form-control" id="schedule" name="schedule" required>
                             <option value="" selected>- Select -</option>
                             @foreach ($schedules as $schedule)
-                                <option value="{{ $schedule->slug }}">{{ $schedule->slug }} -> from
-                                    {{ $schedule->time_in }} to {{ $schedule->time_out }} </option>
+                                <option value="{{ $schedule->slug }}">{{ $schedule->slug }} -> AM {{ $schedule->time_in_am }} - {{ $schedule->time_out_am }}, PM {{ $schedule->time_in_pm }} - {{ $schedule->time_out_pm }} </option>
                             @endforeach
 
                         </select>

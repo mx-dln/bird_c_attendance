@@ -16,8 +16,10 @@ class CreateSchedulesTable extends Migration
         Schema::create('schedules', function (Blueprint $table) {
             $table->Increments('id')->unsigned();
             $table->string('slug')->unique();
-            $table->time('time_in');
-            $table->time('time_out');
+            $table->time('time_in_am');
+            $table->time('time_out_am');
+            $table->time('time_in_pm');
+            $table->time('time_out_pm');
 
             $table->timestamps();
         });

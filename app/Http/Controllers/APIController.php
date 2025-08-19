@@ -72,7 +72,7 @@ class ApiController extends Controller
                     $attendance->attendance_time = date("H:i:s");
                     $attendance->attendance_date = date("Y-m-d");
 
-                    if (!($employee->schedules->first()->time_in >= $attendance->attendance_time)) {
+                    if (!($employee->schedules->first()->time_in_am >= $attendance->attendance_time)) {
                         $attendance->status = 0;
                         AttendanceController::lateTime($employee);
                     };
@@ -104,7 +104,7 @@ class ApiController extends Controller
                     $leave->leave_time = date("H:i:s");
                     $leave->leave_date = date("Y-m-d");
                     // ontime + overtime if true , else "early go" ....
-                    if ($leave->leave_time >= $employee->schedules->first()->time_out) {
+                    if ($leave->leave_time >= $employee->schedules->first()->time_out_pm) {
                         leaveController::overTime($employee);
                     } else {
                         $leave->status = 0;

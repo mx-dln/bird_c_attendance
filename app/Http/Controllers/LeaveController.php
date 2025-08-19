@@ -21,7 +21,10 @@ class LeaveController extends Controller
 
     public function indexOvertime()
     {
-        return view('admin.overtime')->with(['overtimes' => Overtime::all()]);
+        $overtimes = Overtime::with(['employee.schedules'])
+            ->orderByDesc('overtime_date')
+            ->get();
+        return view('admin.overtime')->with(['overtimes' => $overtimes]);
     }
 
 

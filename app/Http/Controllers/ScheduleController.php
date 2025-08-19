@@ -12,7 +12,6 @@ class ScheduleController extends Controller
     {
      
         return view('admin.schedule')->with('schedules', Schedule::all());
-        flash()->success('Success','Schedule has been created successfully !');
 
     }
 
@@ -23,8 +22,10 @@ class ScheduleController extends Controller
 
         $schedule = new schedule;
         $schedule->slug = $request->slug;
-        $schedule->time_in = $request->time_in;
-        $schedule->time_out = $request->time_out;
+        $schedule->time_in_am = $request->time_in_am;
+        $schedule->time_out_am = $request->time_out_am;
+        $schedule->time_in_pm = $request->time_in_pm;
+        $schedule->time_out_pm = $request->time_out_pm;
         $schedule->save();
 
 
@@ -37,14 +38,18 @@ class ScheduleController extends Controller
 
     public function update(ScheduleEmp $request, Schedule $schedule)
     {
-        $request['time_in'] = str_split($request->time_in, 5)[0];
-        $request['time_out'] = str_split($request->time_out, 5)[0];
+        $request['time_in_am'] = str_split($request->time_in_am, 5)[0];
+        $request['time_out_am'] = str_split($request->time_out_am, 5)[0];
+        $request['time_in_pm'] = str_split($request->time_in_pm, 5)[0];
+        $request['time_out_pm'] = str_split($request->time_out_pm, 5)[0];
 
         $request->validated();
 
         $schedule->slug = $request->slug;
-        $schedule->time_in = $request->time_in;
-        $schedule->time_out = $request->time_out;
+        $schedule->time_in_am = $request->time_in_am;
+        $schedule->time_out_am = $request->time_out_am;
+        $schedule->time_in_pm = $request->time_in_pm;
+        $schedule->time_out_pm = $request->time_out_pm;
         $schedule->save();
         flash()->success('Success','Schedule has been Updated successfully !');
         return redirect()->route('schedule.index');

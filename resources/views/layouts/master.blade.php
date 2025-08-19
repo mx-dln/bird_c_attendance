@@ -21,7 +21,7 @@
                 </div> 
             </div> 
         </div> 
-        @include('layouts.footer')  
+
         @include('layouts.footer-script')  
     </div> 
     @include('includes.flash')

@@ -42,8 +42,10 @@
                                         <th data-priority="3">Name</th>
 
                                         <th data-priority="4">Over Time</th>
-                                        <th data-priority="5">Time In</th>
-                                        <th data-priority="6">Time Out</th>
+                                        <th data-priority="5">Time In Am</th>
+                                        <th data-priority="6">Time Out Am</th>
+                                        <th data-priority="7">Time In Pm</th>
+                                        <th data-priority="8">Time Out Pm</th>
 
 
                                     </tr>
@@ -53,11 +55,13 @@
 
                                         <tr>
                                             <td>{{ $overtime->overtime_date }}</td>
-                                            <td>{{ $overtime->emp_id }}</td>
+                                            <td>{{ $overtime->employee->emp_code ?? $overtime->emp_id }}</td>
                                             <td>{{ $overtime->employee->name }}</td>
                                             <td>{{ $overtime->duration }} </td>
-                                            <td>{{ $overtime->employee->schedules->first()->time_in }} </td>
-                                            <td>{{ $overtime->employee->schedules->first()->time_out }}</td>
+                                            <td>{{ optional($overtime->employee->schedules->first())->time_in_am }} </td>
+                                            <td>{{ optional($overtime->employee->schedules->first())->time_out_am }} </td>
+                                            <td>{{ optional($overtime->employee->schedules->first())->time_in_pm }} </td>
+                                            <td>{{ optional($overtime->employee->schedules->first())->time_out_pm }}</td>
                                         </tr>
 
                                     @endforeach

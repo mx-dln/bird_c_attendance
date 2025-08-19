@@ -51,8 +51,10 @@
                                     <tr>
                                         <th data-priority="1">ID</th>
                                         <th data-priority="2">Shift</th>
-                                        <th data-priority="3">Time In</th>
-                                        <th data-priority="4">Time Out</th>
+                                        <th data-priority="3">Time In (AM)</th>
+                                        <th data-priority="4">Time Out (AM)</th>
+                                        <th data-priority="3">Time In (PM)</th>
+                                        <th data-priority="4">Time Out (PM)</th>
                                         <th data-priority="5">Action</th>
                                      
 
@@ -63,8 +65,10 @@
                                         <tr>
                                             <td> {{ $schedule->id }} </td>
                                             <td> {{ $schedule->slug }} </td>
-                                            <td> {{ $schedule->time_in }} </td>
-                                            <td> {{ $schedule->time_out }} </td>
+                                            <td> {{ $schedule->time_in_am }} </td>
+                                            <td> {{ $schedule->time_out_am }} </td>
+                                            <td> {{ $schedule->time_in_pm }} </td>
+                                            <td> {{ $schedule->time_out_pm }} </td>
                                             <td>
 
                                                 <a href="#edit{{ $schedule->slug }}" data-toggle="modal"

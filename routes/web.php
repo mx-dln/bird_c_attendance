@@ -26,8 +26,21 @@ Route::group(['middleware' => ['auth', 'Role'], 'roles' => ['admin']], function 
     Route::resource('/schedule', '\App\Http\Controllers\ScheduleController');
 
     Route::get('/check', '\App\Http\Controllers\CheckController@index')->name('check');
-    Route::get('/sheet-report', '\App\Http\Controllers\CheckController@sheetReport')->name('sheet-report');
+    Route::get('/sheet-report', '\App\\Http\\Controllers\\CheckController@sheetReport')->name('sheet-report');
+    // Reports: Employees list and Monthly DTR
+    Route::get('/reports/employees', '\App\\Http\\Controllers\\CheckController@sheetReport')->name('reports.employees');
+    Route::get('/reports/dtr/{employee:id}', '\App\\Http\\Controllers\\CheckController@monthlyDtr')->name('reports.dtr');
+    Route::get('/reports/dtr/{employee:id}/pdf', '\App\\Http\\Controllers\\CheckController@monthlyDtrPdf')->name('reports.dtr.pdf');
     Route::post('check-store','\App\Http\Controllers\CheckController@CheckStore')->name('check_store');
+
+    // QR Attendance
+    Route::get('/employees/{employee}/qr', function(\App\Models\Employee $employee){
+        return view('admin.employee-qr', compact('employee'));
+    })->name('employees.qr');
+    Route::get('/attendance/qr-scan', function(){
+        return view('admin.qr-scan');
+    })->name('attendance.qr.scan');
+    Route::post('/attendance/qr/check-in', '\App\Http\Controllers\AttendanceController@qrCheckIn')->name('attendance.qr.checkin');
     
     // Fingerprint Devices
     Route::resource('/finger_device', '\App\Http\Controllers\BiometricDeviceController');
@@ -57,6 +70,9 @@ Route::group(['middleware' => ['auth']], function () {
     
 
 });
+
+// Public QR check-in endpoint (no auth)
+Route::post('/qr/check-in-public', '\App\\Http\\Controllers\\AttendanceController@qrCheckIn')->name('qr.checkin.public');
 
 // Route::get('/attendance/assign', function () {
 //     return view('attendance_leave_login');

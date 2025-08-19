@@ -71,6 +71,7 @@
                         
                                                                 <a href="#edit{{$employee->name}}" data-toggle="modal" class="btn btn-success btn-sm edit btn-flat"><i class='fa fa-edit'></i> Edit</a>
                                                                 <a href="#delete{{$employee->name}}" data-toggle="modal" class="btn btn-danger btn-sm delete btn-flat"><i class='fa fa-trash'></i> Delete</a>
+                                                                <a href="{{ route('employees.qr', $employee) }}" class="btn btn-info btn-sm"><i class='fa fa-qrcode'></i> QR</a>
                                                             </td>
                                                         </tr>
                                                         @endforeach

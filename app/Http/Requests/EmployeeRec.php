@@ -24,6 +24,8 @@ class EmployeeRec extends FormRequest
     public function rules()
     {
         return [
+            // Alphanumeric employee code like MPD-0128-272
+            'emp_code' => ['nullable','string','max:64','unique:employees,emp_code','regex:/^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/'],
             'name' => 'required|string|min:3|max:64|alpha_dash',
             'position' => 'required|string|min:3|max:64|alpha_dash',
             'schedule' => 'required|exists:schedules,slug',

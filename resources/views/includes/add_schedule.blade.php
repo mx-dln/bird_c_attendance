@@ -21,20 +21,38 @@
                         
                     </div>
                     <div class="form-group">
-                        <label for="time_in" class="col-sm-3 control-label">Time In</label>
+                        <label for="time_in_am" class="col-sm-3 control-label">Time In AM</label>
 
                         
                             <div class="bootstrap-timepicker">
-                                <input type="time" class="form-control timepicker" id="time_in" name="time_in" required>
+                                <input type="time" class="form-control timepicker" id="time_in_am" name="time_in_am" required>
                             </div>
                         
                     </div>
                     <div class="form-group">
-                        <label for="time_out" class="col-sm-3 control-label">Time Out</label>
+                        <label for="time_out_am" class="col-sm-3 control-label">Time Out AM</label>
 
                         
                             <div class="bootstrap-timepicker">
-                                <input type="time" class="form-control timepicker" id="time_out" name="time_out" required>
+                                <input type="time" class="form-control timepicker" id="time_out_am" name="time_out_am" required>
+                            </div>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="time_in_pm" class="col-sm-3 control-label">Time In PM</label>
+
+                        
+                            <div class="bootstrap-timepicker">
+                                <input type="time" class="form-control timepicker" id="time_in_pm" name="time_in_pm" required>
+                            </div>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="time_out_pm" class="col-sm-3 control-label">Time Out PM</label>
+
+                        
+                            <div class="bootstrap-timepicker">
+                                <input type="time" class="form-control timepicker" id="time_out_pm" name="time_out_pm" required>
                             </div>
                         
                     </div>
